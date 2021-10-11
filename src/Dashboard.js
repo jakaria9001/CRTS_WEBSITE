@@ -42,11 +42,12 @@ function Dashboard(props) {
     complaintsToDisplay = complaintsToDisplay.slice(starting,Math.min(ending,complaintsToDisplay.length)+1);
         
     console.log(complaintsToDisplay)
-  return (
-      <div>
+    
+    return (
+      <div className="container">
         
-        <div>
-          <table className="table table-striped table-hover">
+        <div className="container">
+          <table className="table table-striped table-hover" >
                   <thead>
                       <tr>
                       <th scope="col">Name</th>
@@ -75,7 +76,7 @@ function Dashboard(props) {
                                     <td onClick={()=>{
                                         let allMovies = allComplaints;
 
-                                        let index = allMovies.findIndex((eel)=> eel._id==el._id);
+                                        let index = allMovies.findIndex((eel)=> eel._id===el._id);
 
                                         allMovies[index].status==="Registered"?allMovies[index].status = "Assigned":allMovies[index].status="Registered";
 
@@ -85,7 +86,7 @@ function Dashboard(props) {
                                     <td><button type="button" className="btn btn-danger" onClick={()=>{
                                         let allMovies = allComplaints;
                                         allMovies = allMovies.filter((elid)=>{
-                                           return elid._id!=el._id
+                                           return elid._id!==el._id
                                         })
                                         setComplaints(allMovies)
                                     }}>
@@ -113,18 +114,18 @@ function Dashboard(props) {
                 {
                     arr.map((el)=>{
                         return(
-                            <li class="page-item" onClick={()=>{
+                            <li className="page-item" onClick={()=>{
                                 setCurPage(el)
                             }}>
-                                <a class="page-link" href="#">
+                                <a className="page-link" href="#">
                                     {el}
                                 </a>
                             </li>
                         )
                     })
                 }
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next" onClick={()=>{
+                <li className="page-item">
+                    <a className="page-link" href="#" aria-label="Next" onClick={()=>{
                         let cPage = curPage;
                         cPage++;
                         if(cPage>noOfPages) cPage = noOfPages; 
